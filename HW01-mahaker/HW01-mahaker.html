@@ -42,12 +42,12 @@
 
 	<h3>現在の月給を入力してください。</h3>
 	<form id="form1">
-    <input type="text" id="saraly" maxlength="5" size="5" style="text-align:right" onkeydown="maskInputNum()"><span>千円/月</span>
-    <input type="button" onclick="doPrintSaraly();" value="表示">
+    <input type="text" id="salary" maxlength="5" size="5" style="text-align:right" onkeydown="maskInputNum()"><span>千円/月</span>
+    <input type="button" onclick="doPrintsalary();" value="表示">
 	</form>
 	<div>
 		<span>入力値：</span>
-	  <span id="output_saraly"></span>
+	  <span id="output_salary"></span>
 	</div>
 </section>
 </div><!-- /.main-wrapper -->
@@ -56,9 +56,9 @@
 <script>
 var olimpic_year = "2020-07"; //ハイフンを区切りとした年月
 
-function doPrintSaraly() {
-	var target = document.getElementById("output_saraly");
-	target.innerText = document.forms.form1.saraly.value;
+function doPrintsalary() {
+	var target = document.getElementById("output_salary");
+	target.innerText = document.forms.form1.salary.value;
 }
 
 function doPrintDate() {
