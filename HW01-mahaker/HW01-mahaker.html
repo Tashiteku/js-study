@@ -13,34 +13,82 @@
 <h1>東京オリンピックまでにいただけるお給料を計算します。</h1>
 </div><!-- /.header-contents -->
 </header>
+<body onload="doPrintDate()">
 <div class="main-wrapper">
 <section>
-	<p>現在日時：<span id="time"></span></p>
-	<p>toLocaleDateString():<span id="LocaleDateString"><span></p>
+
+  <div>
+		<span>現在日時（ISO8601）：</span>
+    <span id="date"></span>
+	</div>
+	<div>
+		<span>現在日時（ISO8601 月）：</span>
+    <span id="parse_date_month"></span>
+  </div>
+	<div>
+		<span>現在日時（ISO8601 日）：</span>
+    <span id="parse_date_day"></span>
+	</div>
+
+	<h2>東京オリンピック開催日</h2>
+	<div>
+		<span>現在日時（ISO8601 月）：</span>
+    <span id="parse_dist_month"></span>
+  </div>
+	<div>
+		<span>現在日時（ISO8601 日）：</span>
+    <span id="parse_dist_day"></span>
+	</div>
+
+	<h3>現在の月給を入力してください。</h3>
+	<form id="form1">
+    <input type="text" id="saraly" maxlength="5" size="5" style="text-align:right" onkeydown="maskInputNum()"><span>千円/月</span>
+    <input type="button" onclick="doPrintSaraly();" value="表示">
+	</form>
+	<div>
+		<span>入力値：</span>
+	  <span id="output_saraly"></span>
+	</div>
 </section>
 </div><!-- /.main-wrapper -->
+</body>
 <footer>JavaScript Samples</footer>
 <script>
-var olimpic_year = "202007";
-var now = new Date();
-var year = now.getFullYear();
-var month = now.getMonth();
-var date = now.getDate();
-var hour = now.getHours();
-var min = now.getMinutes();
-var ampm = '';
-if(hour < 12) {
-	ampm = 'a.m.';
-} else {
-	ampm = 'p.m.';
-}
-//var output = year + '/' + (month + 1) + '/' + date + ' ' + (hour % 12) + ':' + min + ampm;
-var output = now.toISOString(); //2016-09-20T08:55:40.204Z
-document.getElementById('time').textContent = output;
-var Locale = now.toLocaleDateString();
-document.getElementById("LocaleDateString").textContent = Locale;
+var olimpic_year = "2020-07"; //ハイフンを区切りとした年月
 
+function doPrintSaraly() {
+	var target = document.getElementById("output_saraly");
+	target.innerText = document.forms.form1.saraly.value;
 }
+
+function doPrintDate() {
+	var now = new Date();
+	var output = now.toISOString(); //2016-09-20T08:55:40.204Z
+	document.getElementById("date").innerText = output;
+	doPrintParseDate(output);
+	doPrintParseDist(olimpic_year);
+}
+
+function doPrintParseDate(source) {
+	var output = source.split("-");
+	document.getElementById("parse_date_month").innerText = output[0];
+	document.getElementById("parse_date_day").innerText = output[1];
+}
+
+function doPrintParseDist(source) {
+	var output = source.split("-");
+	document.getElementById("parse_dist_month").innerText = output[0];
+	document.getElementById("parse_dist_day").innerText = output[1];
+}
+
+function maskInputNum() {
+	if (!(event.keyCode >= 48 && event.keyCode <= 57 || event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 37 || event.keyCode == 39)) {
+		event.preventDefault();
+	  return false;
+	}
+	return true;
+}
+
 </script>
 </body>
 </html>
