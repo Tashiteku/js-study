@@ -14,40 +14,25 @@
 <h1>東京オリンピックまでにいただけるお給料を計算します。</h1>
 </div><!-- /.header-contents -->
 </header>
-<body onload="doPrintDate()">
+<body onload="doPrintParseDist()">
 <div class="main-wrapper">
 <section>
   <div>
-		<span>現在日時（ISO8601）：</span>
-    <span id="date"></span>
-	</div>
-	<div>
-		<span>現在日時（ISO8601 月）：</span>
-    <span id="parse_date_month"></span>
+    <span id="dist_date"></span></span>
+  </div>
+  <div>
+	  <h3>現在の月給を入力してください。</h3>
+	  <form id="form1">
+      <input type="text" id="salary" maxlength="5" size="5" style="text-align:right" onkeydown="maskInputNum()"><span>千円/月</span>
+      <input type="button" onclick="doCulcSalaryOlympic();" value="計算">
+	  </form>
   </div>
 	<div>
-		<span>現在日時（ISO8601 日）：</span>
-    <span id="parse_date_day"></span>
-	</div>
-
-	<h2>東京オリンピック開催日</h2>
-	<div>
-		<span>現在日時（ISO8601 月）：</span>
-    <span id="parse_dist_month"></span>
-  </div>
-	<div>
-		<span>現在日時（ISO8601 日）：</span>
-    <span id="parse_dist_day"></span>
-	</div>
-
-	<h3>現在の月給を入力してください。</h3>
-	<form id="form1">
-    <input type="text" id="salary" maxlength="5" size="5" style="text-align:right" onkeydown="maskInputNum()"><span>千円/月</span>
-    <input type="button" onclick="doPrintsalary();" value="表示">
-	</form>
-	<div>
-		<span>入力値：</span>
-	  <span id="output_salary"></span>
+    <h1>
+		  <span>計算結果：</span>
+	    <span id="culc_salary_olympic"></span>
+      <span>千円/月</span>
+    </h1>
 	</div>
 </section>
 </div><!-- /.main-wrapper -->

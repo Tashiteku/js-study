@@ -1,28 +1,20 @@
-var olimpic_year = "2020-07"; //ハイフンを区切りとした年月
+var olympic = "2020-07"; //ハイフンを区切りとした年月
 
-function doPrintsalary() {
-	var target = document.getElementById("output_salary");
-	target.innerText = document.forms.form1.salary.value;
+function doPrintParseDist() {
+  olympicSprit = olympic.split("-");
+  var output_olympic_message = "次回オリンピック開催は "+olympicSprit[0]+"年"+olympicSprit[1]+"月 です";
+	document.getElementById("dist_date").innerText = output_olympic_message;
 }
 
-function doPrintDate() {
-	var now = new Date();
-	var output = now.toISOString(); //2016-09-20T08:55:40.204Z
-	document.getElementById("date").innerText = output;
-	doPrintParseDate(output);
-	doPrintParseDist(olimpic_year);
-}
-
-function doPrintParseDate(source) {
-	var output = source.split("-");
-	document.getElementById("parse_date_month").innerText = output[0];
-	document.getElementById("parse_date_day").innerText = output[1];
-}
-
-function doPrintParseDist(source) {
-	var output = source.split("-");
-	document.getElementById("parse_dist_month").innerText = output[0];
-	document.getElementById("parse_dist_day").innerText = output[1];
+function doCulcSalaryOlympic() {
+  var now = new Date();
+  var nowISO = now.toISOString();
+	var nowISOSprit = nowISO.split("-");
+  var span_year = olympicSprit[0] - nowISOSprit[0];
+  var span_month = olympicSprit[1] - nowISOSprit[1];
+  var total_span_month = span_year * 12 + span_month;
+  var result_culc_salary = total_span_month * document.forms.form1.salary.value;
+  document.getElementById("culc_salary_olympic").innerText = result_culc_salary;
 }
 
 function maskInputNum() {
