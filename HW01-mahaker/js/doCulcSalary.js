@@ -8,7 +8,7 @@ function doPrintParseDist() {
 }
 
 function doCulcSalaryOlympic() {
-	nowISOSprit = getNowISO();
+  nowISOSprit = getNowISO();
   var span_year = getSpan_year();
   var span_month = getSpan_month();
   var total_span_month = span_year * 12 + span_month;
